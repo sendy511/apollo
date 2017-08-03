@@ -1,0 +1,13 @@
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>My Books</title>
+</head>
+<body>
+    <h2>Here is my books:</h2>
+    <div th:unless="${#lists.isEmpty(books)}">
+        <div th:each="book : ${books}">
+            <span th:text="${book.title}"></span>
+        </div>
+    </div>
+</body>
+</html>
