@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
@@ -23,5 +24,12 @@ public class ReadingListController {
         List<Reading> byReader = readlingListRepository.findByReader(reader);
         model.addAttribute("readinglist", byReader);
         return "readinglist";
+    }
+
+    @RequestMapping(value = "/{reader}", method = RequestMethod.POST)
+    public String addList(Reading reading){
+        System.out.println("test");
+        readlingListRepository.save(reading);
+        return "redirect:/readinglist/{reader}";
     }
 }
