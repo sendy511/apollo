@@ -1,9 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <title>Reading List</title>
 </head>
 <body>
     <h1>Here is my reading list:</h1>
+    <div th:unless="${#lists.isEmpty(readinglist)}">
+        <div th:each="reading: ${readinglist}">
+            <span th:text="${reading.name}"></span>
+        </div>
+    </div>
 </body>
 </html>
